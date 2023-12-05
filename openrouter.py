@@ -3,12 +3,12 @@ from typing import Any, List, Mapping, Optional
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 
-class Mistral(LLM):
-    n: int
+class OpenRouter(LLM):
+    model: str
 
     @property
     def _llm_type(self) -> str:
-        return "mistral"
+        return f"openrouter:{self.model}"
 
     def _call(
         self,
@@ -23,7 +23,7 @@ class Mistral(LLM):
             'Content-Type': 'application/json'
         }
         data = {
-            'model': "mistralai/mistral-7b-instruct",
+            'model': self.model,
             'messages': [
                 {'role': 'user', 'content': prompt}
             ]
@@ -39,4 +39,4 @@ class Mistral(LLM):
     @property
     def _identifying_params(self) -> Mapping[str, Any]:
         """Get the identifying parameters."""
-        return {"n": self.n}
+        return {"model": self.model}

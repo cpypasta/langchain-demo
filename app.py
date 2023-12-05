@@ -7,7 +7,7 @@ from langchain.prompts import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import StrOutputParser
 from bs4 import BeautifulSoup
-from openrouter import Mistral
+from openrouter import OpenRouter
 
 load_dotenv(find_dotenv())
 SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
@@ -156,19 +156,20 @@ def generate_response(llm, summaries, query):
   return response
   
   
-llm_mistral = Mistral(n=1)
+llm_mistral = OpenRouter(model="mistralai/mistral-7b-instruct")
 llm_chat = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
 llm_davinci = OpenAI(model="text-davinci-003", temperature=0.7)
 llm_curie = OpenAI(model="text-curie-001", temperature=0.7)
 
-query = "how are ai agents powered by llm?"
-optimized_query = optimize_query(llm_chat, query)
-print(optimized_query)
-search_response = search(optimized_query)
-urls = find_best_article_urls(llm_chat, search_response, optimized_query, top_n=False)
-print(urls)
-data = get_content_from_urls(urls)
-summaries = summarize(llm_davinci, data, optimized_query)
-print(generate_response(llm_chat, summaries, optimized_query))
+# query = "how are ai agents powered by llm?"
+# optimized_query = optimize_query(llm_chat, query)
+# print(optimized_query)
+# search_response = search(optimized_query)
+# urls = find_best_article_urls(llm_chat, search_response, optimized_query, top_n=False)
+# print(urls)
+# data = get_content_from_urls(urls)
+# summaries = summarize(llm_davinci, data, optimized_query)
+# print(generate_response(llm_chat, summaries, optimized_query))
 
-# print(llm("Who are you?"))
+# print(llm_mistral("Who are you?"))
+print(llm_davinci("Who are you?"))
