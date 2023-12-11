@@ -4,3 +4,5 @@ lib
 pyvenv.cfg
 .env
 __*
+share
+etc
