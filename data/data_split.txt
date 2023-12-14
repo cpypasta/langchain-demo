@@ -1,0 +1,8 @@
+#ENTRY
+This is some text on multiple
+lines, but really should go together,
+as you can see.
+#ENTRY
+Another entry that is also
+on muiltiple
+lines.
