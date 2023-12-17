@@ -1,9 +1,10 @@
-# Langchain Pipelines
+# Langchain Demo
 
-[Code Example](./chain.py)
+* [Chains](./chains.ipynb)
+* [Agents](./agents.ipynb)
+* [Retrieval (RAG)](./retrieval.ipynb)
 
-# Langchain Agent
+## Extras:
 
-# Autgen Agents
-
-# Taskweaver Agents
+* [OpenRouter LLM](./openrouter.py)
+* [Test Chain](./chain_test.py)
